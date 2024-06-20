@@ -1,0 +1,27 @@
+function CheckElite()
+    for i,v in next, Enemies:GetChildren() do
+        if table.find(elitemob, v.Name) and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+            return v
+        end
+    end
+end
+function BDistanceElite()
+    if RS:FindFirstChild("Deandre") or RS:FindFirstChild("Urban") or RS:FindFirstChild("Diablo") then
+        local v = RS:FindFirstChild("Deandre") or RS:FindFirstChild("Urban") or RS:FindFirstChild("Diablo")
+        if GetDistance(v.HumanoidRootPart.Position) > 2000 then
+            BypassTele(v.HumanoidRootPart.CFrame)
+        elseif GetDistance(v.HumanoidRootPart.Position) < 2000 then
+            ToTween(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
+        end
+    end
+end
+function DisableTween(v0)
+    if not v0 then
+        NoClip = false
+        ToTween(LP.Character.HumanoidRootPart.CFrame)
+    end
+end
+function StopTween()
+    NoClip = false
+    ToTween(LP.Character.HumanoidRootPart.CFrame)
+end
